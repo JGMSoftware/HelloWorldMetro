@@ -15,6 +15,11 @@
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
         <x:String x:Key="AppName">Hello, World!</x:String>
     </Page.Resources>
+    <common:LayoutAwarePage.TopAppBar>
+        <AppBar Foreground="#FFDC2020" BorderBrush="Red" Background="#FF93DC12">
+            <Button x:Name="photoPageButton" Click="photoPageButtonClicked" HorizontalAlignment="Right" Style="{StaticResource PicturesAppBarButtonStyle}" />
+        </AppBar>
+    </common:LayoutAwarePage.TopAppBar>
 
     <!--
         This grid acts as a root panel for the page that defines two rows:
@@ -44,7 +49,6 @@
                 <Button Content="Say &quot;Hello&quot;" Click="Button_Click" HorizontalAlignment="Left"/>
             </StackPanel>
             <TextBlock x:Name="greetingOutput" Style="{StaticResource BigGreenTextStyle}" />
-            <Button x:Name="photoPageButton" Content="Go to photo page" Click="photoPageButtonClicked" />
         </StackPanel>
 
         <VisualStateManager.VisualStateGroups>

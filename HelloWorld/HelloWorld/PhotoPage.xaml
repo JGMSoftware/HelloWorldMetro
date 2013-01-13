@@ -36,6 +36,28 @@
             <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
             <TextBlock x:Name="pageTitle" Grid.Column="1" Text="{StaticResource AppName}" Style="{StaticResource PageHeaderTextStyle}"/>
         </Grid>
+        <Grid x:Name="contentGrid" Margin="120,0,0,120" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Content="Get Photo" Click="GetPhotoButtonClick"/>
+            <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="{Binding DisplayName}" Style="{StaticResource PageSubheaderTextStyle}"/>
+            <StackPanel x:Name="imagePanel" Grid.Row="2" Orientation="Horizontal">
+                <Border BorderBrush="Gray" BorderThickness="1" Background="Gray">
+                    <Image x:Name="displayImage" Source="Assets/Logo.png"/>
+                </Border>
+                <StackPanel Margin="20.2,0,0,0">
+                    <TextBlock TextWrapping="Wrap" Text="Filename:" Style="{StaticResource CaptionTextStyle}"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Name}" Style="{StaticResource ItemTextStyle}" Margin="10,0,0,30"/>
+                    <TextBlock TextWrapping="Wrap" Text="Path:" Style="{StaticResource CaptionTextStyle}"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Path}" Style="{StaticResource ItemTextStyle}" Margin="10,0,0,30"/>
+                    <TextBlock TextWrapping="Wrap" Text="Date Created:" Style="{StaticResource CaptionTextStyle}"/>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding DateCreated}" Style="{StaticResource ItemTextStyle}" Margin="10,0,0,30"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
 
         <VisualStateManager.VisualStateGroups>
 
@@ -50,6 +72,20 @@
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
                         </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(StackPanel.Orientation)" Storyboard.TargetName="imagePanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Orientation>Vertical</Orientation>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="imagePanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>0,0,19,0</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
                     </Storyboard>
                 </VisualState>
 
@@ -61,6 +97,20 @@
                         </ObjectAnimationUsingKeyFrames>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
                             <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="contentGrid">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>20,0,0,20</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(StackPanel.Orientation)" Storyboard.TargetName="imagePanel">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Orientation>Vertical</Orientation>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
                         </ObjectAnimationUsingKeyFrames>
                     </Storyboard>
                 </VisualState>
